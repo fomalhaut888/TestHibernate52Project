@@ -3,7 +3,7 @@
 	<groupId>cwchen.test</groupId>
 	<artifactId>hibernate52</artifactId>
 	<version>1.0.0</version>
-	<name>TestHibernate52ProjectLibs</name>
+	<name>TestHibernate52ProjectLibs</name> 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
