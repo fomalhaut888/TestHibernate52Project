@@ -5,7 +5,7 @@
 	<version>1.0.0</version>
 	<name>TestHibernate52ProjectLibs</name> 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!-- test -->
 	</properties>
 	<dependencies>
 		<!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
