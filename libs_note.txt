@@ -1,0 +1,48 @@
+1. Hibernate JPA 2.1 Entity Manager v5.2.4:
+	(1) antlr-2.7.7.jar
+	(2) cdi-api-1.1.jar
+	(3) classmate-1.3.0.jar
+	(4) dom4j-1.6.1.jar
+	(5) el-api-2.2.jar
+	(6) geronimo-jta_1.1_spec-1.1.1.jar
+	(7) hibernate-commons-annotations-5.0.1.Final.jar
+	(8) hibernate-core-5.2.4.Final.jar
+	(9) hibernate-entitymanager-5.2.4.Final.jar
+	(10) hibernate-jpa-2.1-api-1.0.0.Final.jar
+	(11) jandex-2.0.0.Final.jar
+	(12) javassist-3.20.0-GA.jar
+	(13) javax.inject-1.jar
+	(14) jboss-interceptors-api_1.1_spec-1.0.0.Beta1.jar
+	(15) jboss-logging-3.3.0.Final.jar
+	(16) jsr250-api-1.0.jar
+	
+2. Hibernate JPA 2 Metamodel Generator v5.2.4:
+	(1) hibernate-jpamodelgen-5.2.4.Final.jar
+	(*2*) jboss-logging-3.3.0.Final.jar (as required as Hibernate JPA 2.1 Entity Manager)
+	
+3. MySQL Connector-J v5.1.40:
+	(1) mysql-connector-java-5.1.40.jar
+	
+4. Spring framework v4.3.4:
+	(1) spring-core-4.3.4.RELEASE.jar
+	(2) spring-beans-4.3.4.RELEASE.jar
+	(3) spring-context-4.3.4.RELEASE.jar
+	(4) spring-context-support-4.3.4.RELEASE.jar
+	(5) spring-expression-4.3.4.RELEASE.jar
+	(6) spring-jdbc-4.3.4.RELEASE.jar
+	(7) spring-orm-4.3.4.RELEASE.jar
+	(8) spring-tx-4.3.4.RELEASE.jar
+	(9) spring-aop-4.3.4.RELEASE.jar
+	(10) spring-web-4.3.4.RELEASE.jar
+	(11) spring-webmvc-4.3.4.RELEASE.jar
+	(12) commons-logging-1.2.jar
+	(13) aspectjtools-1.8.9.jar
+	(14) jstl-1.2.jar
+	(15) jackson-core-2.8.5.jar
+	(16) jackson-annotations-2.8.5.jar
+	(17) jackson-databind-2.8.5.jar
+	
+5. Log4j v1.2.17:
+	(1) log4j-1.2.17.jar
+	(2) slf4j-api-1.7.21.jar
+	(3) slf4j-log4j12-1.7.21.jar

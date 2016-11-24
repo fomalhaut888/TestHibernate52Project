@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+	<Loader/>
+	<Resources className="org.apache.catalina.webresources.StandardRoot">
+	</Resources>
+	<!-- <WatchedResource>C:\Tomcat858/conf/web.xml</WatchedResource> -->
+	<WatchedResource>D:/LeadWS7/Servers/Tomcat v8.5 Server at localhost-config/web.xml</WatchedResource>
+	<!-- 
+	<Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" logAbandoned="false" 
+	    		maxActive="400" maxIdle="40" maxWait="-1" minEvictableIdleTimeMillis="18000000" 
+	    		minIdle="20" name="jdbc/leoadwordsdb" password="01517124" removeAbandoned="true" 
+	    		removeAbandonedTimeout="300" testOnBorrow="true" testOnReturn="false" testWhileIdle="true"
+	    		timeBetweenEvictionRunsMillis="3600000" type="javax.sql.DataSource" 
+	    		url="jdbc:mysql://127.0.0.1/leoadwordsdb?useUnicode=true&amp;characterEncoding=UTF-8" 
+	    		username="root" validationQuery="select 1 from dual"/> -->
+	<Resource auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
+	    		name="jdbc/hibernatetestdb" username="root" password="01517124" 
+	    		url="jdbc:mysql://127.0.0.1/hibernatetestdb?useUnicode=true&amp;characterEncoding=UTF-8" 
+	    		logAbandoned="false" removeAbandonedOnMaintenance="true" timeBetweenEvictionRunsMillis="3600000" 
+	    		removeAbandonedOnBorrow="true" removeAbandonedTimeout="300"   validationQuery="select 1 from dual"
+	    		maxTotal="400" maxIdle="20" minIdle="10" minEvictableIdleTimeMillis="18000000"  
+	    		maxWaitMillis="-1" testOnBorrow="true" testOnReturn="false" testWhileIdle="true" />
+	<JarScanner>
+		<JarScanFilter/>
+	</JarScanner>
+	<CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"/>
+</Context>

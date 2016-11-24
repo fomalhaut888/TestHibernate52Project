@@ -2,6 +2,8 @@
     <wb-module deploy-name="TestHibernate52Project">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/metamodel"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <property name="context-root" value="TestHibernate52Project"/>
         <property name="java-output-path" value="/TestHibernate52Project/build/classes"/>
     </wb-module>
