@@ -5,7 +5,7 @@
 					version="2.1">
 		<persistence-unit name="HibernateTest" transaction-type="RESOURCE_LOCAL">
 				<description>Hibernate Test</description>
-				<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+				<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
 				<non-jta-data-source>java:comp/env/jdbc/hibernatetestdb</non-jta-data-source>
 				<class>test.entities.User</class>
 				<class>test.entities.Language</class>

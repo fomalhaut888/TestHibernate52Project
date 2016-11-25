@@ -1,6 +1,5 @@
 package test.web.controllers;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +55,47 @@ public class TestController extends AbstractController {
 						throws Exception{
 				
 				testAccess.addUser(employeeId, name, 'A', motherLanguageId);
+				
+				response.sendRedirect(request.getContextPath() + "/s/list");
+		}
+		
+		@RequestMapping(value = "/delete", method = RequestMethod.POST)
+		public void delete(
+				@RequestParam(value="id")long userId,
+				HttpServletRequest request, 
+				HttpServletResponse response) throws Exception{
+				
+				testAccess.deleteUser(userId);
+				
+				response.sendRedirect(request.getContextPath() + "/s/list");
+		}
+		
+		@RequestMapping(value = "/update", method = RequestMethod.GET)
+		public ModelAndView update(@RequestParam(value="id")long userId){
+				ModelAndView mav = new ModelAndView();
+				
+				Map<String, Object> user = testAccess.findUserById(userId);
+				
+				List<Map<String, Object>> languages = testAccess.findAllLanguages();
+				logger.debug("languages=" + languages);
+				
+				mav.setViewName("update");
+				mav.addObject("languages", languages);
+				mav.addObject("user", user);
+				return mav;
+		}
+		
+		@RequestMapping(value = "/updateToDb", method = RequestMethod.POST)
+		public void updateToDb(
+				@RequestParam(value="id")long userId,
+				@RequestParam(value="employeeId")String employeeId,
+				@RequestParam(value="name")String name,
+				@RequestParam(value="motherLanguage")long motherLanguageId,
+				HttpServletRequest request, 
+				HttpServletResponse response) 
+						throws Exception{
+				
+				testAccess.updateUser(userId, employeeId, name, motherLanguageId);
 				
 				response.sendRedirect(request.getContextPath() + "/s/list");
 		}

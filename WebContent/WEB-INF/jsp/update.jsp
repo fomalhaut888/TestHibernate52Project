@@ -6,7 +6,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- <fmt:setLocale value="${param.locale}"/> -->
 <!-- fmt:setBundle basename="messages" -->
-<% List<Map<String, Object>> languages = (List<Map<String, Object>>)request.getAttribute("languages"); %>
+<% 
+	Map<String, Object> user = (Map<String, Object>)request.getAttribute("user");
+	List<Map<String, Object>> languages = (List<Map<String, Object>>)request.getAttribute("languages");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,23 +18,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>新增</title>
+    <title>更新</title>
 </head>
 <body>
-<H1>新增!</H1>
-<form method="post" action="<%=request.getContextPath() %>/s/addToDb">
-<p>員工編號: <input type="text" name="employeeId" required/></p>
-<p>姓名: <input type="text" name="name" required /></p>
+<H1>更新!</H1>
+<form method="post" action="<%=request.getContextPath() %>/s/updateToDb">
+<p>ID: <%=user.get("id") %> <input type="hidden" name="id" value="<%=user.get("id") %>" /></p>
+<p>員工編號: <input type="text" name="employeeId" value="<%=user.get("employeeId") %>" required/></p>
+<p>姓名: <input type="text" name="name" value="<%=user.get("name") %>" required /></p>
 <p>
 	母語: 
 	<select name="motherLanguage">
-<%	for(Map<String, Object> map: languages){ %>
-		<option value="<%=map.get("id") %>"><%=map.get("name") %></option>
+<%	Long motherLanguageId = (Long)user.get("motherLanguageId");
+		for(Map<String, Object> map: languages){
+			Long languageId = (Long)map.get("id"); %>
+		<option value="<%=languageId %>" <%=(languageId.equals(motherLanguageId))?"selected": "" %>><%=map.get("name") %></option>
 <%	} %>
 	</select>
 </p>
 <p>
-	<input type="submit" value="新增">
+	<input type="submit" value="更新">
 	&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="reset" value="重設">
 	&nbsp;&nbsp;&nbsp;&nbsp;

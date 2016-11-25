@@ -34,26 +34,19 @@
 		
 		<bean id="testEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		    <property name="persistenceUnitName" value="HibernateTest" />
-			<property name="loadTimeWeaver">
-				<bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
-			</property>
+		    <!-- 
+		    <property name="dataSource" ref="hibernatetestdbDataSource" /> -->
+		    <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		    <!-- 
+		    <property name="persistenceXmlLocation" value="classpath:persistence.xml"></property> -->
+		</bean>
+		<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+			<property name="showSql" value="true" />
 		</bean>
 		<bean id="testTxManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         	<property name="entityManagerFactory" ref="testEmf"/>
     	</bean>
-    	<!-- <tx:annotation-driven transaction-manager="testTxManager" /> -->
-		<aop:config>
-			<aop:pointcut id="testAccessMethods" expression="execution(* test.daos.impl.TestAccessImpl.*(..))"/>
-			<aop:advisor advice-ref="txAdvice" pointcut-ref="testAccessMethods"/>
-		</aop:config>
-		<tx:advice id="txAdvice" transaction-manager="testTxManager">
-			<tx:attributes>
-				<tx:method name="find*" propagation="REQUIRED" read-only="true" />
-				<tx:method name="add*" propagation="REQUIRED" read-only="false"  />
-			</tx:attributes>
-    	</tx:advice>
-    	<!-- bean post-processor for JPA annotations -->
-    	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    	<tx:annotation-driven transaction-manager="testTxManager" />
 		
 		<bean id="testAccessImpl" class="test.daos.impl.TestAccessImpl" />
 </beans>
