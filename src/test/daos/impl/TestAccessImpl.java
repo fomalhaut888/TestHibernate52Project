@@ -28,9 +28,12 @@ public class TestAccessImpl extends BaseDao implements TestAccess {
 			CriteriaBuilder builder = sharedManager.getCriteriaBuilder();
 			CriteriaQuery<User> criteria = builder.createQuery( User.class );
 			Root<User> root = criteria.from( User.class );
-			criteria.select( root );
-			criteria.where( builder.equal( root.get( User_.status ), 'A' ) );
-			criteria.orderBy(builder.asc(root.get(User_.employeeId)));
+			//criteria.select( root );
+			//criteria.where( builder.equal( root.get( User_.status ), 'A' ) );
+			//criteria.orderBy(builder.asc(root.get(User_.employeeId)));
+			criteria = criteria.select( root )
+					.where( builder.equal( root.get( User_.status ), 'A' ) )
+					.orderBy(builder.asc(root.get(User_.employeeId)));
 			List<User> users = sharedManager.createQuery(criteria).getResultList();
 			List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
 			for(User user: users){
