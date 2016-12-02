@@ -12,21 +12,22 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.2.4.Final</version>
+			<version>5.2.5.Final</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>5.2.4.Final</version>
+			<version>5.2.5.Final</version>
 		</dependency>
+		
 		<!-- MySQL connector-J -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.40</version>
 		</dependency>
-		<!-- Spring framework-->
+		<!-- Spring framework -->
 		<dependency>
 	  		<groupId>org.springframework</groupId>
 	  		<artifactId>spring-context</artifactId>

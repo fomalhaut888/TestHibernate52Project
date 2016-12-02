@@ -1,23 +1,24 @@
-1. Hibernate JPA 2.1 Entity Manager v5.2.4:
+1. Hibernate JPA 2.1 Entity Manager v5.2.5:
 	(1) antlr-2.7.7.jar
-	(2) cdi-api-1.1.jar
-	(3) classmate-1.3.0.jar
-	(4) dom4j-1.6.1.jar
-	(5) el-api-2.2.jar
-	(6) geronimo-jta_1.1_spec-1.1.1.jar
-	(7) hibernate-commons-annotations-5.0.1.Final.jar
-	(8) hibernate-core-5.2.4.Final.jar
-	(9) hibernate-entitymanager-5.2.4.Final.jar
-	(10) hibernate-jpa-2.1-api-1.0.0.Final.jar
-	(11) jandex-2.0.0.Final.jar
-	(12) javassist-3.20.0-GA.jar
-	(13) javax.inject-1.jar
-	(14) jboss-interceptors-api_1.1_spec-1.0.0.Beta1.jar
-	(15) jboss-logging-3.3.0.Final.jar
-	(16) jsr250-api-1.0.jar
+	(2) byte-buddy-1.5.4.jar
+	(3) cdi-api-1.1.jar
+	(4) classmate-1.3.0.jar
+	(5) dom4j-1.6.1.jar
+	(6) el-api-2.2.jar
+	(7) geronimo-jta_1.1_spec-1.1.1.jar
+	(8) hibernate-commons-annotations-5.0.1.Final.jar
+	(9) hibernate-core-5.2.5.Final.jar
+	(10) hibernate-entitymanager-5.2.5.Final.jar
+	(11) hibernate-jpa-2.1-api-1.0.0.Final.jar
+	(12) jandex-2.0.3.Final.jar
+	(13) javassist-3.20.0-GA.jar
+	(14) javax.inject-1.jar
+	(15) jboss-interceptors-api_1.1_spec-1.0.0.Beta1.jar
+	(16) jboss-logging-3.3.0.Final.jar
+	(17) jsr250-api-1.0.jar
 	
-2. Hibernate JPA 2 Metamodel Generator v5.2.4:
-	(1) hibernate-jpamodelgen-5.2.4.Final.jar
+2. Hibernate JPA 2 Metamodel Generator v5.2.5:
+	(1) hibernate-jpamodelgen-5.2.5.Final.jar
 	(*2*) jboss-logging-3.3.0.Final.jar (as required as Hibernate JPA 2.1 Entity Manager)
 	
 3. MySQL Connector-J v5.1.40:

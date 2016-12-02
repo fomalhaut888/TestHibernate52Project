@@ -1,4 +1,4 @@
-package test;
+package test.servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,8 +21,8 @@ import test.entities.User_;
 /**
  * Servlet implementation class HibernateTest
  */
-@WebServlet("/hibernateTest")
-public class HibernateTest extends HttpServlet {
+@WebServlet("/jpaQueryTest")
+public class JpaQueryTestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static EntityManagerFactory emf;
@@ -34,7 +34,7 @@ public class HibernateTest extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HibernateTest() {
+    public JpaQueryTestServlet() {
         super();
     }
 
@@ -42,33 +42,39 @@ public class HibernateTest extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			// TODO Auto-generated method stub
 			EntityManager manager = null;
 			try{
 					manager = emf.createEntityManager();
 					CriteriaBuilder builder = manager.getCriteriaBuilder();
 					CriteriaQuery<User> criteria = builder.createQuery( User.class );
 					Root<User> root = criteria.from( User.class );
-					criteria.select( root );
-					criteria.where( builder.equal( root.get( User_.name ), "Simon Chen" ) );
+					criteria = criteria.select( root )
+							.where( builder.equal( root.get( User_.status ), 'A' ) )
+							.orderBy(builder.asc(root.get(User_.employeeId)));
 					List<User> users = manager.createQuery(criteria).getResultList();
 					StringBuffer html = new StringBuffer();
-					for(User user: users){
-							html.append("<p>");
-							html.append("id=");
-							html.append(user.getId());
-							html.append("; employeeId=");
-							html.append(user.getEmployeeId());
-							html.append("; name=");
-							html.append(user.getName());
-							html.append("; status=");
-							html.append(user.getStatus());
-							html.append("; motherLanguage=");
-							if(user.getMotherLanguage() != null){
-									html.append(user.getMotherLanguage().getName());
-							}else{
-									html.append("Unknown");
+					if(users.size() > 0){
+							for(User user: users){
+									html.append("<p>");
+									html.append("id=");
+									html.append(user.getId());
+									html.append("; employeeId=");
+									html.append(user.getEmployeeId());
+									html.append("; name=");
+									html.append(user.getName());
+									html.append("; status=");
+									html.append(user.getStatus());
+									html.append("; motherLanguage=");
+									if(user.getMotherLanguage() != null){
+											html.append(user.getMotherLanguage().getName());
+									}else{
+											html.append("Unknown");
+									}
+									html.append("</p>");
 							}
+					}else{
+							html.append("<p>");
+							html.append("無資料!");
 							html.append("</p>");
 					}
 					response.setContentType("text/html; charset=UTF-8");

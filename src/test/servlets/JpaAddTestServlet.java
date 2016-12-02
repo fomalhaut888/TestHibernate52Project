@@ -1,4 +1,4 @@
-package test;
+package test.servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,8 +19,8 @@ import test.entities.User;
 /**
  * Servlet implementation class HibernateTestServlet
  */
-@WebServlet("/jpaTest")
-public class JpaTestServlet extends HttpServlet {
+@WebServlet("/jpaAddTest")
+public class JpaAddTestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static EntityManagerFactory emf;
@@ -32,7 +32,7 @@ public class JpaTestServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JpaTestServlet() {
+    public JpaAddTestServlet() {
         super();
     }
 
@@ -68,14 +68,14 @@ public class JpaTestServlet extends HttpServlet {
 									'A');
 							manager.persist(motherLanguage);
 					}
-					User user = new User("leo01517124", "Simon Chen", 'A', motherLanguage);
+					User user = new User("leoA00000", "陳先生", 'A', motherLanguage);
 					manager.persist(user);
 					tx.commit();
 					
 					response.setContentType("text/html; charset=UTF-8");
 					response.getWriter().append("id=" + user.getId() + "; employeeId=" + user.getEmployeeId()
 							+ "; name=" + user.getName() + "; status=" + user.getStatus()
-							+ "; mother language=" + user.getMotherLanguage().getName() + "! OK!");
+							+ "; mother language=" + user.getMotherLanguage().getName() + "! 新增OK!");
 			}catch(Exception e){
 					e.printStackTrace();
 					if(tx != null){

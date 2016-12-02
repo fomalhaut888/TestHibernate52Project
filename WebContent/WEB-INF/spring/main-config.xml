@@ -37,8 +37,7 @@
 		    <!-- 
 		    <property name="dataSource" ref="hibernatetestdbDataSource" /> -->
 		    <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		    <!-- 
-		    <property name="persistenceXmlLocation" value="classpath:persistence.xml"></property> -->
+		    <property name="persistenceXmlLocation" value="classpath:persistence.xml"></property>
 		</bean>
 		<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 			<property name="showSql" value="true" />

@@ -1,0 +1,10 @@
+
+    alter table USER 
+        drop 
+        foreign key fk_user_to_mother_language;
+
+    drop table if exists hibernate_sequence;
+
+    drop table if exists LANGUAGE;
+
+    drop table if exists USER;

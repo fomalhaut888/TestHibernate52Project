@@ -1,0 +1,30 @@
+
+    create table hibernate_sequence (
+        next_val bigint
+    ) ENGINE=InnoDB;
+
+    insert into hibernate_sequence values ( 1 );
+
+    insert into hibernate_sequence values ( 1 );
+
+    create table LANGUAGE (
+        id bigint not null,
+        code varchar(255) not null,
+        name varchar(255) not null,
+        status char(1) not null,
+        primary key (id)
+    ) ENGINE=InnoDB;
+
+    create table USER (
+        id bigint not null,
+        employee_id varchar(255),
+        name varchar(255) not null,
+        status char(1) not null,
+        mother_language bigint,
+        primary key (id)
+    ) ENGINE=InnoDB;
+
+    alter table USER 
+        add constraint fk_user_to_mother_language 
+        foreign key (mother_language) 
+        references LANGUAGE (id);
