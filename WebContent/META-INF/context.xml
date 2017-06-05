@@ -13,9 +13,9 @@
 	    		timeBetweenEvictionRunsMillis="3600000" type="javax.sql.DataSource" 
 	    		url="jdbc:mysql://127.0.0.1/leoadwordsdb?useUnicode=true&amp;characterEncoding=UTF-8" 
 	    		username="root" validationQuery="select 1 from dual"/> -->
-	<Resource auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
+	<Resource auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.cj.jdbc.Driver"
 	    		name="jdbc/hibernatetestdb" username="root" password="01517124" 
-	    		url="jdbc:mysql://127.0.0.1/hibernatetestdb?useUnicode=true&amp;characterEncoding=UTF-8" 
+	    		url="jdbc:mysql://127.0.0.1/hibernatetestdb?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT%2B8" 
 	    		logAbandoned="false" removeAbandonedOnMaintenance="true" timeBetweenEvictionRunsMillis="3600000" 
 	    		removeAbandonedOnBorrow="true" removeAbandonedTimeout="300"   validationQuery="select 1 from dual"
 	    		maxTotal="400" maxIdle="20" minIdle="10" minEvictableIdleTimeMillis="18000000"  
