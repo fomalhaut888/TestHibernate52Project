@@ -9,6 +9,10 @@
 				<non-jta-data-source>java:comp/env/jdbc/hibernatetestdb</non-jta-data-source>
 				<class>test.entities.User</class>
 				<class>test.entities.Language</class>
+				<class>test.entities.Gender</class>
+				<class>test.entities.Education</class>
+				<class>test.entities.County</class>
+				<class>test.entities.Card</class>
 				<exclude-unlisted-classes>true</exclude-unlisted-classes>
 				<!-- 
 				<properties>

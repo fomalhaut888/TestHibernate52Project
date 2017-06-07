@@ -31,13 +31,19 @@
 </form>
 <H1>Hello World! 讚!</H1>
 <p><input type="button" value="新增" onclick="javascript: location.href='<%=request.getContextPath() %>/s/add'; " /></p>
-<% for(Map<String, Object> map: users){ %>
+<% for(int i = 0; i < users.size(); i++){
+   		Map<String, Object> user = users.get(i); %>
 <p>
-	<%="id=" + map.get("id") + "; employeeId=" + map.get("employeeId") + "; name=" + map.get("name") + "; status=" + map.get("status") + "; motherLanguage=" + map.get("motherLanguageName") %>
+	<%="(" + (i + 1) + ") 員工編號=" + user.get("employeeId") + "; 姓名=" + user.get("name") 
+	 + "; 性別=" + user.get("genderName") 
+	 + "; 母語=" + user.get("motherLanguageName")
+	 + "; 學歷=" + user.get("educationName")
+	 + "; 居住縣市=" + user.get("countyName")
+	 + "; 卡號=" + user.get("cardNumber") %>
 	&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="javascript: location.href='<%=request.getContextPath() %>/s/update?id=<%=map.get("id") %>'; ">更新</a>
+	<a href="javascript: location.href='<%=request.getContextPath() %>/s/update?id=<%=user.get("id") %>'; ">更新</a>
 	&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="javascript: deleteUser('<%=map.get("id") %>');">刪除</a>
+	<a href="javascript: deleteUser('<%=user.get("id") %>');">刪除</a>
 </p>
 <% } %>
 </body>

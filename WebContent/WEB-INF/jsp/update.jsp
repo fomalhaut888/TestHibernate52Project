@@ -8,7 +8,10 @@
 <!-- fmt:setBundle basename="messages" -->
 <% 
 	Map<String, Object> user = (Map<String, Object>)request.getAttribute("user");
+	List<Map<String, Object>> genders = (List<Map<String, Object>>)request.getAttribute("genders");
 	List<Map<String, Object>> languages = (List<Map<String, Object>>)request.getAttribute("languages");
+	List<Map<String, Object>> educations = (List<Map<String, Object>>)request.getAttribute("educations");
+	List<Map<String, Object>> counties = (List<Map<String, Object>>)request.getAttribute("counties");
 %>
 <!DOCTYPE html>
 <html>
@@ -27,12 +30,42 @@
 <p>員工編號: <input type="text" name="employeeId" value="<%=user.get("employeeId") %>" required/></p>
 <p>姓名: <input type="text" name="name" value="<%=user.get("name") %>" required /></p>
 <p>
+	性別: 
+	<select name="gender">
+<%	long currentGenderId = (Long)user.get("genderId");
+	for(Map<String, Object> gender: genders){
+		long genderId = (Long)gender.get("id"); %>
+		<option value="<%=genderId %>" <%=(currentGenderId == genderId)?"selected": "" %>><%=gender.get("name") %></option>
+<%	} %>
+	</select>
+</p>
+<p>
 	母語: 
 	<select name="motherLanguage">
-<%	Long motherLanguageId = (Long)user.get("motherLanguageId");
-		for(Map<String, Object> map: languages){
-			Long languageId = (Long)map.get("id"); %>
-		<option value="<%=languageId %>" <%=(languageId.equals(motherLanguageId))?"selected": "" %>><%=map.get("name") %></option>
+<%	long currentMotherLanguageId = (Long)user.get("motherLanguageId");
+		for(Map<String, Object> language: languages){
+		long languageId = (Long)language.get("id"); %>
+		<option value="<%=languageId %>" <%=(currentMotherLanguageId == languageId)?"selected": "" %>><%=language.get("name") %></option>
+<%	} %>
+	</select>
+</p>
+<p>
+	學歷: 
+	<select name="education">
+<%	long currentEducationId = (Long)user.get("educationId");
+	for(Map<String, Object> education: educations){
+		long educationId = (Long)education.get("id"); %>
+		<option value="<%=educationId %>" <%=(currentEducationId == educationId)?"selected": "" %>><%=education.get("name") %></option>
+<%	} %>
+	</select>
+</p>
+<p>
+	居住縣市: 
+	<select name="county">
+<%	long currentCountyId = (Long)user.get("countyId");
+	for(Map<String, Object> county: counties){
+		long countyId = (Long)county.get("id"); %>
+		<option value="<%=countyId %>" <%=(currentCountyId == countyId)?"selected": "" %>><%=county.get("name") %></option>
 <%	} %>
 	</select>
 </p>

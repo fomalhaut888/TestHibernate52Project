@@ -13,26 +13,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import test.entities.Language;
-import test.entities.User;
+import test.entities.Gender;
 
 /**
  * Servlet implementation class HibernateTestServlet
  */
-@WebServlet("/jpaAddTest")
-public class JpaAddTestServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/jpaAddGender")
+public class JpaAddGenderServlet extends HttpServlet {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9146075530300929643L;
 	
 	private static EntityManagerFactory emf;
 	
 	static {
-			emf = Persistence.createEntityManagerFactory( "HibernateTest" );
+			emf = Persistence.createEntityManagerFactory("HibernateTest");//One of persistence-unit names in classpath://META-INF/persistence.xml
 	}
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JpaAddTestServlet() {
+    public JpaAddGenderServlet() {
         super();
     }
 
@@ -43,39 +45,43 @@ public class JpaAddTestServlet extends HttpServlet {
 			EntityManager manager = null;
 			EntityTransaction tx = null;
 			try{
+					String code = request.getParameter("code");
+					String name = request.getParameter("name");
+				
 					manager = emf.createEntityManager();
 					tx = manager.getTransaction();
 					tx.begin();
-					double r = Math.random();
-					String motherLangCode;
-					if(r > 0.5d){
-							motherLangCode = "zh";
-					}else{
-							motherLangCode = "en";
-					}
-					List<Language> list = manager
-							.createQuery("from Language where code = :code and status = :status", Language.class)
-							.setParameter("code", motherLangCode)
+					
+					List<Gender> list = manager
+							.createQuery("from Gender where code = :code and status = :status", Gender.class)
+							.setParameter("code", code)
 							.setParameter("status", 'A')
 							.getResultList();
-					Language motherLanguage = null;
-					if(list.size() > 0){
-							motherLanguage = list.get(0);
+					Gender gender = null;
+					String html;
+					if(list.size() > 0){//update name if code has existed.
+							gender = list.get(0);
+							gender.setName(name);
+							
+							html = "id=" + gender.getId() + "; code=" + gender.getCode()
+									+ "; name=" + gender.getName() + "; status=" + gender.getStatus()
+									+ "! 更新'性別選項' - OK!";
+					}else{//new
+							gender = new Gender();
+							gender.setCode(code);
+							gender.setName(name);
+							gender.setStatus('A');
+							
+							html = "id=" + gender.getId() + "; code=" + gender.getCode()
+									+ "; name=" + gender.getName() + "; status=" + gender.getStatus()
+									+ "! 新增'性別選項' - OK!";
 					}
-					if(motherLanguage == null){
-							motherLanguage = new Language(motherLangCode, 
-									(motherLangCode.equals("zh")?"中文": "英文"),
-									'A');
-							manager.persist(motherLanguage);
-					}
-					User user = new User("leoA00000", "陳先生", 'A', motherLanguage);
-					manager.persist(user);
+					
+					manager.persist(gender);
 					tx.commit();
 					
 					response.setContentType("text/html; charset=UTF-8");
-					response.getWriter().append("id=" + user.getId() + "; employeeId=" + user.getEmployeeId()
-							+ "; name=" + user.getName() + "; status=" + user.getStatus()
-							+ "; mother language=" + user.getMotherLanguage().getName() + "! 新增OK!");
+					response.getWriter().append(html);
 			}catch(Exception e){
 					e.printStackTrace();
 					if(tx != null){

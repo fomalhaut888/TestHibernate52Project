@@ -1,0 +1,93 @@
+
+    create table CARD (
+       id binary(255) not null,
+        user bigint,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table COUNTY (
+       id bigint not null,
+        code varchar(255) not null,
+        name varchar(255) not null,
+        status char(1) not null,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table EDUCATION (
+       id bigint not null,
+        code varchar(255) not null,
+        name varchar(255) not null,
+        status char(1) not null,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table GENDER (
+       id bigint not null auto_increment,
+        code varchar(255) not null,
+        name varchar(255) not null,
+        status char(1) not null,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table hibernate_sequence (
+       next_val bigint
+    ) engine=InnoDB;
+
+    insert into hibernate_sequence values ( 1 );
+
+    create table LANGUAGE (
+       id bigint not null,
+        code varchar(255) not null,
+        name varchar(255) not null,
+        status char(1) not null,
+        primary key (id)
+    ) engine=InnoDB;
+
+    create table my_sequences (
+       seq_name varchar(255) not null,
+        next_id bigint,
+        primary key (seq_name)
+    ) engine=InnoDB;
+
+    create table seq_language (
+       next_val bigint
+    ) engine=InnoDB;
+
+    insert into seq_language values ( 300 );
+
+    create table USER (
+       id bigint not null,
+        employee_id varchar(255) not null,
+        name varchar(255) not null,
+        status char(1) not null,
+        county bigint not null,
+        education bigint not null,
+        gender bigint not null,
+        mother_language bigint not null,
+        primary key (id)
+    ) engine=InnoDB;
+
+    alter table CARD 
+       add constraint fk_card_to_user 
+       foreign key (user) 
+       references USER (id);
+
+    alter table USER 
+       add constraint fk_user_to_county 
+       foreign key (county) 
+       references COUNTY (id);
+
+    alter table USER 
+       add constraint fk_user_to_education 
+       foreign key (education) 
+       references EDUCATION (id);
+
+    alter table USER 
+       add constraint fk_user_to_gender 
+       foreign key (gender) 
+       references GENDER (id);
+
+    alter table USER 
+       add constraint fk_user_to_mother_language 
+       foreign key (mother_language) 
+       references LANGUAGE (id);

@@ -1,0 +1,38 @@
+
+    alter table CARD 
+       drop 
+       foreign key fk_card_to_user;
+
+    alter table USER 
+       drop 
+       foreign key fk_user_to_county;
+
+    alter table USER 
+       drop 
+       foreign key fk_user_to_education;
+
+    alter table USER 
+       drop 
+       foreign key fk_user_to_gender;
+
+    alter table USER 
+       drop 
+       foreign key fk_user_to_mother_language;
+
+    drop table if exists CARD;
+
+    drop table if exists COUNTY;
+
+    drop table if exists EDUCATION;
+
+    drop table if exists GENDER;
+
+    drop table if exists hibernate_sequence;
+
+    drop table if exists LANGUAGE;
+
+    drop table if exists my_sequences;
+
+    drop table if exists seq_language;
+
+    drop table if exists USER;

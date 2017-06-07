@@ -3,7 +3,9 @@ package test.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -11,7 +13,8 @@ import javax.persistence.Table;
 public class Language {
 		@Id
 		@Column(name = "id")
-		@GeneratedValue
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq_language")
+		@SequenceGenerator(name="seq_language", sequenceName = "seq_language", initialValue=300, allocationSize=2)
 		private long id;
 		
 		@Column(name = "code", nullable = false)

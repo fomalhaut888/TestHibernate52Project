@@ -1,0 +1,6 @@
+insert into LANGUAGE(code, name, status) values('zh', '中文', 'A');
+insert into LANGUAGE(code, name, status) values('en', '英文', 'A');
+
+insert into GENDER(code, name, status) values('M', '男', 'A');
+insert into GENDER(code, name, status) values('F', '女', 'A');
+insert into GENDER(code, name, status) values('U', '未知', 'A');

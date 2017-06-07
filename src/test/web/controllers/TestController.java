@@ -37,11 +37,20 @@ public class TestController extends AbstractController {
 		public ModelAndView add(){
 				ModelAndView mav = new ModelAndView();
 				
+				List<Map<String, Object>> genders = testAccess.findAllGenders();
+				logger.debug("genders=" + genders);
 				List<Map<String, Object>> languages = testAccess.findAllLanguages();
 				logger.debug("languages=" + languages);
+				List<Map<String, Object>> educations = testAccess.findAllEducations();
+				logger.debug("educations=" + educations);
+				List<Map<String, Object>> counties = testAccess.findAllCounties();
+				logger.debug("counties=" + counties);
 				
 				mav.setViewName("add");
+				mav.addObject("genders", genders);
 				mav.addObject("languages", languages);
+				mav.addObject("educations", educations);
+				mav.addObject("counties", counties);
 				return mav;
 		}
 		
@@ -49,12 +58,16 @@ public class TestController extends AbstractController {
 		public void addToDb(
 				@RequestParam(value="employeeId")String employeeId,
 				@RequestParam(value="name")String name,
+				@RequestParam(value="gender")long genderId,
 				@RequestParam(value="motherLanguage")long motherLanguageId,
+				@RequestParam(value="education")long educationId,
+				@RequestParam(value="county")long countyId,
 				HttpServletRequest request, 
 				HttpServletResponse response) 
 						throws Exception{
 				
-				testAccess.addUser(employeeId, name, 'A', motherLanguageId);
+				testAccess.addUser(employeeId, name, 'A', genderId, motherLanguageId,
+						educationId, countyId);
 				
 				response.sendRedirect(request.getContextPath() + "/s/list");
 		}
@@ -76,11 +89,20 @@ public class TestController extends AbstractController {
 				
 				Map<String, Object> user = testAccess.findUserById(userId);
 				
+				List<Map<String, Object>> genders = testAccess.findAllGenders();
+				logger.debug("genders=" + genders);
 				List<Map<String, Object>> languages = testAccess.findAllLanguages();
 				logger.debug("languages=" + languages);
+				List<Map<String, Object>> educations = testAccess.findAllEducations();
+				logger.debug("educations=" + educations);
+				List<Map<String, Object>> counties = testAccess.findAllCounties();
+				logger.debug("counties=" + counties);
 				
 				mav.setViewName("update");
+				mav.addObject("genders", genders);
 				mav.addObject("languages", languages);
+				mav.addObject("educations", educations);
+				mav.addObject("counties", counties);
 				mav.addObject("user", user);
 				return mav;
 		}
@@ -90,12 +112,16 @@ public class TestController extends AbstractController {
 				@RequestParam(value="id")long userId,
 				@RequestParam(value="employeeId")String employeeId,
 				@RequestParam(value="name")String name,
+				@RequestParam(value="gender")long genderId,
 				@RequestParam(value="motherLanguage")long motherLanguageId,
+				@RequestParam(value="education")long educationId,
+				@RequestParam(value="county")long countyId,
 				HttpServletRequest request, 
 				HttpServletResponse response) 
 						throws Exception{
 				
-				testAccess.updateUser(userId, employeeId, name, motherLanguageId);
+				testAccess.updateUser(userId, employeeId, name, genderId, motherLanguageId,
+						educationId, countyId);
 				
 				response.sendRedirect(request.getContextPath() + "/s/list");
 		}
